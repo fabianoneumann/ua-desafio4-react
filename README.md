@@ -1,3 +1,10 @@
+# Para rodar o projeto na máquina:
+1. Clonar o projeto
+2. Entrar na pasta do projeto no terminal
+3. Executar o comando "yarn" ou "yarn install"
+4. Executar o comando "yarn start"
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
