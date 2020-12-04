@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import Menu from '../../components/Menu'
-
+import listPessoas from '../../data/pessoas.json'
 
 function LandingPage() {
     const [nome, setNome] = useState("");
     const [idade, setIdade] = useState("");
+    const [pessoas, setPessoas] = useState(listPessoas);
+    const [id, setId] = useState(pessoas.length+1);
 
     function handleSubmit(event) {
-        console.log("Botão Submit Pressionado!");
-        console.log(nome);
-        console.log(idade);
-
-        const pessoa = {
+        const novaPessoa = {
             nome: nome,
-            idade: idade
+            idade: idade,
+            id: id,
         }
 
-        console.log(pessoa);
+        setId(id+1);
+
+        setPessoas([...pessoas, novaPessoa]);
 
         event.preventDefault();
     }
@@ -48,11 +49,9 @@ function LandingPage() {
             </form>
 
             <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
-                <li>Item 5</li>
+                { pessoas.map((pessoa, index) =>
+                    <li key={index}>{pessoa.id} - {pessoa.nome}: {pessoa.idade} anos</li>
+                )}
             </ul>
         </>
     );
