@@ -1,6 +1,10 @@
 import { useState } from 'react'
+
 import Menu from '../../components/Menu'
+import MyTable from '../../components/MyTable'
+
 import listPessoas from '../../data/pessoas.json'
+
 
 function LandingPage() {
     const [nome, setNome] = useState("");
@@ -18,6 +22,9 @@ function LandingPage() {
         setId(id+1);
 
         setPessoas([...pessoas, novaPessoa]);
+        
+        setNome("");
+        setIdade("");
 
         event.preventDefault();
     }
@@ -36,7 +43,7 @@ function LandingPage() {
             <Menu />
             <h1>Conteúdo da LandingPage...</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{ marginBottom: 20 }}>
                 <label>
                     Nome:
                     <input onChange={handleChangeNome} type="text" value={nome} />
@@ -48,11 +55,13 @@ function LandingPage() {
                 <input type="submit" value="Enviar" />
             </form>
 
-            <ul>
+            <MyTable pessoas={pessoas} />
+
+            {/* <ul>
                 { pessoas.map((pessoa, index) =>
                     <li key={index}>{pessoa.id} - {pessoa.nome}: {pessoa.idade} anos</li>
                 )}
-            </ul>
+            </ul> */}
         </>
     );
 }
